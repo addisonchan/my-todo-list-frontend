@@ -20,7 +20,7 @@ const mockAddTodo = jest.fn()
 
 describe('AddTodo', () => {
   beforeEach(() => {
-    jest.clearAllMocks();
+    jest.clearAllMocks()
     mockUseTodo.mockReturnValue({
       addTodo: mockAddTodo,
       todos: [],
@@ -36,7 +36,9 @@ describe('AddTodo', () => {
   test('renders the input and button', () => {
     render(<AddTodo />)
 
-    expect(screen.getByPlaceholderText('input your todo ...')).toBeInTheDocument()
+    expect(
+      screen.getByPlaceholderText('input your todo ...'),
+    ).toBeInTheDocument()
     expect(screen.getByText('Add')).toBeInTheDocument()
   })
 
@@ -49,7 +51,7 @@ describe('AddTodo', () => {
     fireEvent.change(input, { target: { value: 'New Todo' } })
     fireEvent.click(button)
 
-    expect(mockAddTodo).toHaveBeenCalledWith('New Todo');
+    expect(mockAddTodo).toHaveBeenCalledWith('New Todo')
     expect(input).toHaveValue('')
   })
 

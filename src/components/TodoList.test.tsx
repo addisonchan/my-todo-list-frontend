@@ -29,7 +29,9 @@ describe('TodoList', () => {
     render(<TodoList />)
 
     expect(screen.getByText('Loading...')).toBeInTheDocument()
-    expect(screen.getByRole('img', { hidden: true })).toHaveClass('anticon-loading')
+    expect(screen.getByRole('img', { hidden: true })).toHaveClass(
+      'anticon-loading',
+    )
   })
 
   test('renders error state', () => {
@@ -46,8 +48,12 @@ describe('TodoList', () => {
 
     render(<TodoList />)
 
-    expect(screen.getByText('Something went wrong! Please try again.')).toBeInTheDocument()
-    expect(screen.getByRole('img', { hidden: true })).toHaveClass('anticon-frown')
+    expect(
+      screen.getByText('Something went wrong! Please try again.'),
+    ).toBeInTheDocument()
+    expect(screen.getByRole('img', { hidden: true })).toHaveClass(
+      'anticon-frown',
+    )
   })
 
   test('renders empty state', () => {
@@ -65,7 +71,9 @@ describe('TodoList', () => {
     render(<TodoList />)
 
     expect(screen.getByText('Nothing to do!')).toBeInTheDocument()
-    expect(screen.getByRole('img', { hidden: true })).toHaveClass('anticon-smile')
+    expect(screen.getByRole('img', { hidden: true })).toHaveClass(
+      'anticon-smile',
+    )
   })
 
   test('renders todo items', () => {

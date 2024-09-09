@@ -24,7 +24,7 @@ describe('TodoItem', () => {
   }
 
   beforeEach(() => {
-    jest.clearAllMocks();
+    jest.clearAllMocks()
     mockUseTodo.mockReturnValue({
       deleteTodo: mockDeleteTodo,
       updateTodoText: mockUpdateTodoText,
@@ -37,44 +37,53 @@ describe('TodoItem', () => {
     })
   })
 
-    test('renders TodoItem', () => {
-        render(<TodoItem {...defaultProps} />)
+  test('renders TodoItem', () => {
+    render(<TodoItem {...defaultProps} />)
 
-        expect(screen.getByText('Test Todo')).toBeInTheDocument()
-        expect(screen.getByText(/Mark Done/i)).toBeInTheDocument()
-        expect(screen.getByText(/Edit/i)).toBeInTheDocument()
-        expect(screen.getByText(/Delete/i)).toBeInTheDocument()
+    expect(screen.getByText('Test Todo')).toBeInTheDocument()
+    expect(screen.getByText(/Mark Done/i)).toBeInTheDocument()
+    expect(screen.getByText(/Edit/i)).toBeInTheDocument()
+    expect(screen.getByText(/Delete/i)).toBeInTheDocument()
+  })
+
+  test('calls updateTodoStatus when Mark Done button is clicked', () => {
+    render(<TodoItem {...defaultProps} />)
+
+    fireEvent.click(screen.getByText(/Mark Done/i))
+
+    expect(mockUpdateTodoStatus).toHaveBeenCalledWith('1')
+  })
+
+  test('calls deleteTodo when Delete button is clicked', () => {
+    render(<TodoItem {...defaultProps} />)
+
+    fireEvent.click(screen.getByText(/Delete/i))
+
+    expect(mockDeleteTodo).toHaveBeenCalledWith('1')
+  })
+
+  test('calls updateTodoText when Update button is clicked', () => {
+    render(<TodoItem {...defaultProps} />)
+
+    fireEvent.click(screen.getByText(/Edit/i))
+    fireEvent.change(screen.getByRole('textbox'), {
+      target: { value: 'Updated Todo' },
     })
+    fireEvent.click(screen.getByText(/Update/i))
 
-    test('calls updateTodoStatus when Mark Done button is clicked', () => {
-        render(<TodoItem {...defaultProps} />)
+    expect(mockUpdateTodoText).toHaveBeenCalledWith('1', 'Updated Todo')
+  })
 
-        fireEvent.click(screen.getByText(/Mark Done/i))
+  test('displays text with line-through when isDone is true', () => {
+    render(
+      <TodoItem
+        {...defaultProps}
+        todo={{ ...defaultProps.todo, isDone: true }}
+      />,
+    )
 
-        expect(mockUpdateTodoStatus).toHaveBeenCalledWith('1')
-    })
-
-    test('calls deleteTodo when Delete button is clicked', () => {
-        render(<TodoItem {...defaultProps} />)
-
-        fireEvent.click(screen.getByText(/Delete/i))
-
-        expect(mockDeleteTodo).toHaveBeenCalledWith('1')
-    })
-
-    test('calls updateTodoText when Update button is clicked', () => {
-        render(<TodoItem {...defaultProps} />)
-
-        fireEvent.click(screen.getByText(/Edit/i))
-        fireEvent.change(screen.getByRole('textbox'), { target: { value: 'Updated Todo' } })
-        fireEvent.click(screen.getByText(/Update/i))
-
-        expect(mockUpdateTodoText).toHaveBeenCalledWith('1', 'Updated Todo')
-    })
-
-    test('displays text with line-through when isDone is true', () => {
-        render(<TodoItem {...defaultProps} todo={{ ...defaultProps.todo, isDone: true }} />)
-
-        expect(screen.getByText('Test Todo')).toHaveStyle('text-decoration: line-through')
-    })
+    expect(screen.getByText('Test Todo')).toHaveStyle(
+      'text-decoration: line-through',
+    )
+  })
 })

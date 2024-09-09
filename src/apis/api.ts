@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from 'axios'
 import { Todo } from '../types'
 
 const baseUrl = import.meta.env.VITE_API_BASE_URL
@@ -16,7 +16,6 @@ export const insertTodo = async (todo: Todo): Promise<number> => {
 export const removeTodo = async (todoId: string): Promise<number> => {
   const response = await axios.delete(`${baseUrl}/${todoId}`)
   return response.status
-  
 }
 
 export const alterTodo = async (todo: Todo): Promise<number> => {

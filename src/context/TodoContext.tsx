@@ -34,38 +34,38 @@ export const TodoProvider = (props: { children: React.ReactNode }) => {
       console.error(apiError)
     }
     setIsLoading(false)
-  };
+  }
 
   const insertData = async (todo: Todo) => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       insertTodo(todo)
       setTodos([...todos, todo])
       toast.success('Todo added successfully!')
     } catch (error) {
-      setApiError(error as Error);
+      setApiError(error as Error)
       toast.error('Failed to add todo!')
       console.error(apiError)
     }
-    setIsLoading(false);
+    setIsLoading(false)
   }
 
   const removeData = async (todoId: string) => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       await removeTodo(todoId)
       setTodos(prevTodos => prevTodos.filter(todo => todo.id !== todoId))
       toast.success('Todo deleted successfully!')
     } catch (error) {
-      setApiError(error as Error);
+      setApiError(error as Error)
       toast.error('Failed to delete todo!')
       console.error(apiError)
     }
-    setIsLoading(false);
+    setIsLoading(false)
   }
 
   const alterDataIsDone = async (todoId: string) => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       const updatedTodos = todos.map(todo => {
         if (todo.id === todoId) {
@@ -76,22 +76,24 @@ export const TodoProvider = (props: { children: React.ReactNode }) => {
         }
         return todo
       })
-      const todoToBeUpdated = updatedTodos.find(todo => todo.id === todoId) as Todo
+      const todoToBeUpdated = updatedTodos.find(
+        todo => todo.id === todoId,
+      ) as Todo
       if (todoToBeUpdated) {
         await alterTodo(todoToBeUpdated)
         setTodos(updatedTodos)
         toast.success('Todo status updated successfully!')
       }
     } catch (error) {
-      setApiError(error as Error);
+      setApiError(error as Error)
       toast.error('Failed to update todo status!')
       console.error(apiError)
     }
-    setIsLoading(false);
+    setIsLoading(false)
   }
 
   const alterDataText = async (todoId: string, todoText: string) => {
-    setIsLoading(true);
+    setIsLoading(true)
     try {
       const updatedTodos = todos.map(todo => {
         if (todo.id === todoId) {
@@ -102,22 +104,24 @@ export const TodoProvider = (props: { children: React.ReactNode }) => {
         }
         return todo
       })
-      const todoToBeUpdated = updatedTodos.find(todo => todo.id === todoId) as Todo
+      const todoToBeUpdated = updatedTodos.find(
+        todo => todo.id === todoId,
+      ) as Todo
       if (todoToBeUpdated) {
         await alterTodo(todoToBeUpdated)
         setTodos(updatedTodos)
         toast.success('Todo updated successfully!')
       }
     } catch (error) {
-      setApiError(error as Error);
+      setApiError(error as Error)
       toast.error('Failed to update todo!')
       console.error(apiError)
     }
-    setIsLoading(false);
+    setIsLoading(false)
   }
 
   useEffect(() => {
-    fetchData();
+    fetchData()
   }, []) // eslint-disable-line react-hooks/exhaustive-deps
 
   const addTodo = (text: string) => {
@@ -141,8 +145,8 @@ export const TodoProvider = (props: { children: React.ReactNode }) => {
   }
 
   const refreshTodos = () => {
-    fetchData();
-  };
+    fetchData()
+  }
 
   const value: TodoContextProps = {
     todos,

@@ -1,15 +1,19 @@
-import { fetchTodos, insertTodo, removeTodo, alterTodo } from "./api"
+import { fetchTodos, insertTodo, removeTodo, alterTodo } from './api'
 import { Todo } from '../types'
 import { mockTodos } from '../../setupTests'
 
-describe("Todo APIs", () => {
-  test("fetchTodos", async () => {
+describe('Todo APIs', () => {
+  test('fetchTodos', async () => {
     const response = await fetchTodos()
     expect(response).toEqual(mockTodos)
   })
 
   test('insertTodo', async () => {
-    const todo: Todo = { id: '5z33gw9ubPY35QDw4eRrO', text: 'Test Todo 1', isDone: false }
+    const todo: Todo = {
+      id: '5z33gw9ubPY35QDw4eRrO',
+      text: 'Test Todo 1',
+      isDone: false,
+    }
     const response = await insertTodo(todo)
     expect(response).toEqual(201)
   })
@@ -21,7 +25,11 @@ describe("Todo APIs", () => {
   })
 
   test('updateTodo', async () => {
-    const todo: Todo = { id: '5z33gw9ubPY35QDw4eRrO', text: 'Test Todo 1', isDone: true }
+    const todo: Todo = {
+      id: '5z33gw9ubPY35QDw4eRrO',
+      text: 'Test Todo 1',
+      isDone: true,
+    }
     const response = await alterTodo(todo)
     expect(response).toEqual(200)
   })

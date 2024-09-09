@@ -1,18 +1,22 @@
 import { TodoItem } from './TodoItem'
 import { useTodo } from '../context'
-import { SmileOutlined, LoadingOutlined, FrownOutlined } from '@ant-design/icons';
+import {
+  SmileOutlined,
+  LoadingOutlined,
+  FrownOutlined,
+} from '@ant-design/icons'
 
 export const TodoList = () => {
   const { todos, isLoading, apiError: fetchError } = useTodo()
 
   if (isLoading || fetchError || !todos.length) {
-    let icon = <SmileOutlined className="text-5xl" />;
+    let icon = <SmileOutlined className="text-5xl" />
     let message = 'Nothing to do!'
     if (isLoading) {
-      icon = <LoadingOutlined className="text-5xl" />;
+      icon = <LoadingOutlined className="text-5xl" />
       message = 'Loading...'
     } else if (fetchError) {
-      icon = <FrownOutlined className="text-5xl" />;
+      icon = <FrownOutlined className="text-5xl" />
       message = 'Something went wrong! Please try again.'
     }
 

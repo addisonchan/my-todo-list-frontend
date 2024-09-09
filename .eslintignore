@@ -1,0 +1,11 @@
+coverage
+dist
+jest.config.js
+cdk.out
+*.html
+*.htm
+*.d.ts
+!Types.d.ts
+*.wsdl
+.eslintrc.js
+README.md

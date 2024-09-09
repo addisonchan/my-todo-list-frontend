@@ -26,16 +26,12 @@ module.exports = {
           ],
         },
       },
-    ]
+    ],
   },
-  collectCoverageFrom: [
-    './src/**',
-    '!**/node_modules/**'
-  ],
+  collectCoverageFrom: ['./src/**', '!**/node_modules/**'],
   snapshotFormat: {
     escapeString: true,
-    printBasicPrototype: true
+    printBasicPrototype: true,
   },
-  setupFilesAfterEnv: ['<rootDir>/setupTests.ts']
+  setupFilesAfterEnv: ['<rootDir>/setupTests.ts'],
 }
-  

@@ -3,7 +3,13 @@ import { useTodo } from '../context'
 import type { Todo } from '../types'
 import { Input } from './Input'
 import { Button } from 'antd'
-import { CheckSquareOutlined, EditOutlined, DeleteOutlined, SyncOutlined, UpOutlined } from '@ant-design/icons'
+import {
+  CheckSquareOutlined,
+  EditOutlined,
+  DeleteOutlined,
+  SyncOutlined,
+  UpOutlined,
+} from '@ant-design/icons'
 import cn from 'classnames'
 import { motion } from 'framer-motion'
 
@@ -64,48 +70,47 @@ export const TodoItem = (props: { todo: Todo }) => {
     >
       {editingTodoId === todo.id ? (
         <form onSubmit={handleSubmission}>
-        <motion.div layout className="flex gap-2">
-          <Input
-            ref={editInputRef}
-            type="text"
-            value={editingTodoText}
-            onChange={e => setEditingTodoText(e.target.value)}
-          />
-          <Button
-            className='px-5 py-5 text-base font-normal text-orange-300 bg-orange-900 border-2 border-orange-900 active:scale-95 rounded-xl'
-            onClick={() => handleUpdate(todo.id)}
-            icon={<UpOutlined />}
-          >
-            Update
-          </Button>
-        </motion.div>
+          <motion.div layout className="flex gap-2">
+            <Input
+              ref={editInputRef}
+              type="text"
+              value={editingTodoText}
+              onChange={e => setEditingTodoText(e.target.value)}
+            />
+            <Button
+              className="px-5 py-5 text-base font-normal text-orange-300 bg-orange-900 border-2 border-orange-900 active:scale-95 rounded-xl"
+              onClick={() => handleUpdate(todo.id)}
+              icon={<UpOutlined />}
+            >
+              Update
+            </Button>
+          </motion.div>
         </form>
       ) : (
-        <div className='flex flex-col gap-5'>
+        <div className="flex flex-col gap-5">
           <motion.span
             layout
             style={{
-              textDecoration:
-                todo.isDone ? 'line-through' : 'none',
+              textDecoration: todo.isDone ? 'line-through' : 'none',
             }}
             className="text-xl font-bold"
           >
             {todo.text}
           </motion.span>
-          <div className='flex justify-between gap-5'>
+          <div className="flex justify-between gap-5">
             <Button
-              type='text'
+              type="text"
               onClick={() => handleStatusUpdate(todo.id)}
-              className='items-center text-base text-white'
+              className="items-center text-base text-white"
             >
               {todo.isDone ? (
-                <span className='px-2 py-2 rounded-xl hover:bg-blue-300'>
-                  <SyncOutlined className='mr-2'/>
+                <span className="px-2 py-2 rounded-xl hover:bg-blue-300">
+                  <SyncOutlined className="mr-2" />
                   Mark Undone
                 </span>
               ) : (
-                <span className='px-2 py-2 rounded-xl hover:bg-blue-300'>
-                  <CheckSquareOutlined className='mr-2'/>
+                <span className="px-2 py-2 rounded-xl hover:bg-blue-300">
+                  <CheckSquareOutlined className="mr-2" />
                   Mark Done
                 </span>
               )}
@@ -113,21 +118,21 @@ export const TodoItem = (props: { todo: Todo }) => {
             <div className="flex items-center gap-2">
               <Button
                 onClick={() => handleEdit(todo.id, todo.text)}
-                className='items-center text-base text-white'
-                type='text'
+                className="items-center text-base text-white"
+                type="text"
               >
-                <span className='hover:bg-blue-300 px-2 py-2 rounded-xl'>
-                  <EditOutlined/>
+                <span className="hover:bg-blue-300 px-2 py-2 rounded-xl">
+                  <EditOutlined />
                   Edit
                 </span>
               </Button>
               <Button
                 onClick={() => handleDelete(todo.id)}
-                className='items-center text-base text-red-500'
-                type='text'
+                className="items-center text-base text-red-500"
+                type="text"
               >
-                <span className='hover:bg-red-300 px-2 py-2 rounded-xl'>
-                  <DeleteOutlined/>
+                <span className="hover:bg-red-300 px-2 py-2 rounded-xl">
+                  <DeleteOutlined />
                   Delete
                 </span>
               </Button>

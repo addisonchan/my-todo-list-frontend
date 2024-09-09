@@ -9,7 +9,7 @@ describe('Input', () => {
     const inputElement = screen.getByPlaceholderText('Enter text')
     expect(inputElement).toBeInTheDocument()
     expect(inputElement).toHaveClass(
-      'w-full px-5 py-2 bg-transparent border-2 outline-none border-zinc-600 rounded-xl placeholder:text-zinc-500 focus:border-white'
+      'w-full px-5 py-2 bg-transparent border-2 outline-none border-zinc-600 rounded-xl placeholder:text-zinc-500 focus:border-white',
     )
   })
 

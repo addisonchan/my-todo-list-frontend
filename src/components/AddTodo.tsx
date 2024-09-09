@@ -16,7 +16,6 @@ export const AddTodo = () => {
     }
   }, [])
 
-
   const addTodoInput = () => {
     if (input.trim() !== '') {
       addTodo(input)
@@ -42,7 +41,9 @@ export const AddTodo = () => {
           onChange={event => setInput(event.target.value)}
         />
         <Button
-          onClick={() => {addTodoInput()}}
+          onClick={() => {
+            addTodoInput()
+          }}
           icon={<PlusOutlined />}
           className="px-5 py-5 text-base font-normal text-blue-300 bg-blue-900 border-2 border-blue-900 active:scale-95 rounded-xl"
         >
