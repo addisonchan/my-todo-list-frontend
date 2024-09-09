@@ -22,8 +22,7 @@ To set up the front end app at a machine, the follow(s) must be needed first:
 Here are the steps to set up the front after the prerequsistes above are fulfilled.
 
 **1. Install all the node modules**
-Run this command: `npm install`
-Or this: `npm install --force`
+Run this command: `npm install --force`
 
 **2. Build the app**
 Run `npm run build`
