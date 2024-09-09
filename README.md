@@ -32,7 +32,7 @@ Run `npm run preview`
 Or `npm run preview --host` if we want the site exposed to other machines
 
 **4. Access the frontend web page**  
-The url of the web page is shown is the command prompt after running the above command, e.g.:  
+The url of the web page is shown at the command prompt after running the above command, e.g.:  
 ![npm run preview screenshot](./screenshots/vite_preview.png)  
 
 ## Features and Screenshots
