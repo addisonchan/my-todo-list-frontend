@@ -60,14 +60,11 @@ You will then need to try to reload once the backend is up and running again.
 
 To enable frondend development can be done without being blocked by the backend implementation, a API spec is set up first. The details of the API spec can be found in [this repo](https://github.com/addisonchan/my-todo-list-service-pact)
 
-During the frontend development, the developer can point their dev local machine to a mock API service at Swagger. To do so, simply run this:  
-`npm run dev`
-
-However, there is a **rate limiting constraint at Swagger**. Thus, don't call the mock service repeatedly in very few seconds.
+During the frontend development, the developer can point their dev local machine to a mock API service at Swagger. However, there is a **rate limiting constraint at Swagger**. Thus, don't call the mock service repeatedly in very few seconds.
 
 The API url for development is in [this dotenv file](./.env.development), while the production dotenv file is [another file](./.env.production).
 
-There are also some other commands for development:
+There are some commands for development:
 
 - Run frontend by pointing the the Swagger mock service:
 `npm run dev`
