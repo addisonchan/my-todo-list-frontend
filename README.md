@@ -66,7 +66,7 @@ The API url for development is in [this dotenv file](./.env.development), while 
 
 There are some commands for development:
 
-- Run frontend by pointing the the Swagger mock service:
+- Run frontend by pointing to the Swagger mock service:
 `npm run dev`
 - Unit Test:
 `npm run test`
